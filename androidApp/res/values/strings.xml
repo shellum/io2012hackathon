@@ -1,0 +1,27 @@
+<resources>
+
+    <string name="app_name">TrueMPG</string>
+    <string name="title_activity_login">TrueMPG - Login</string>
+    <string name="title_activity_add_mpg">TrueMPG - Add MPG Data</string>
+    <string name="title_activity_add_vehicle">TrueMPG - Add a Vehicle</string>
+    
+    <string name="login_email">email</string>
+    <string name="login_login_button">Login</string>
+    <string name="generic_cancel">Cancel</string>
+    <string name="add_gallons">Gas (Gallons)</string>
+    <string name="generic_okay">OK</string>
+    <string name="add_mileage">Mileage</string>
+    <string name="add_add_data">Add Data</string>
+    <string name="generic_add_vehicle">Add Vehicle</string>
+    <string name="add_vehicle_make">Make</string>
+    <string name="add_vehicle_model">Model</string>
+    <string name="thanks_mpg">Thanks for sending your MPG data</string>
+    <string name="add_vehicle_done">Your vehicle has been added</string>
+    <string name="add_vehicle_year">Year</string>
+    <string name="add_vehicle_vin">VIN</string>
+    <string name="login_instructions">Please login to add MPG data</string>
+    <string name="add_vehicle_name">Vehicle Name</string>
+    <string name="add_vehicle_instructions">Enter your vehicle information to track a new vehicle</string>
+    <string name="add_mpg_instructions">Enter updated vehicle info when you fill up, and send it to the server</string>
+
+</resources>
