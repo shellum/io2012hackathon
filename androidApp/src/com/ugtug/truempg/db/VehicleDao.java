@@ -14,7 +14,7 @@ public class VehicleDao {
 
     public static final String TABLE_NAME = "vehicle";
 
-    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_ID = "vehicleId";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_MAKE = "make";
     public static final String COLUMN_MODEL = "model";
@@ -36,7 +36,7 @@ public class VehicleDao {
 
         contentValues.put(COLUMN_ID, vehicleId);
         db = dbAdapter.getWritableDatabase();
-        db.update(TABLE_NAME, contentValues, COLUMN_ID + "=" + Vehicle.INVALID_ID, null);
+        db.update(TABLE_NAME, contentValues, COLUMN_ID + " is null", null);
         db.close();
     }
     
@@ -66,7 +66,7 @@ public class VehicleDao {
         contentValues.put(COLUMN_VIN, vehicle.vin);
         contentValues.put(COLUMN_YEAR, vehicle.year);
         db = dbAdapter.getWritableDatabase();
-        long newId = db.update(TABLE_NAME, contentValues, COLUMN_ID + " = " + vehicle.id, null);
+        long newId = db.update(TABLE_NAME, contentValues, COLUMN_ID + " = " + vehicle.vehicleId, null);
         db.close();
 
         return newId;
@@ -100,7 +100,7 @@ public class VehicleDao {
         while (cursor.moveToNext())
         {
             Vehicle vehicle = new Vehicle();
-            vehicle.id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
+            vehicle.vehicleId = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
             vehicle.make = cursor.getString(cursor.getColumnIndex(COLUMN_MAKE));
             vehicle.model = cursor.getString(cursor.getColumnIndex(COLUMN_MODEL));
             vehicle.name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
@@ -127,7 +127,7 @@ public class VehicleDao {
         }
 
         Vehicle vehicle = new Vehicle();
-        vehicle.id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
+        vehicle.vehicleId = cursor.getLong(cursor.getColumnIndex(COLUMN_ID));
         vehicle.make = cursor.getString(cursor.getColumnIndex(COLUMN_MAKE));
         vehicle.model = cursor.getString(cursor.getColumnIndex(COLUMN_MODEL));
         vehicle.name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));

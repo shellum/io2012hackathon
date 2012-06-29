@@ -61,18 +61,19 @@ public class AddVehicleActivity extends Activity {
         //Create a new vehicle using the data
         //The id will later be re-written with the server's vehicle id
         Vehicle vehicle = new Vehicle();
-        vehicle.id = Vehicle.INVALID_ID;
+        vehicle.vehicleId = Vehicle.INVALID_ID;
         vehicle.make = make;
         vehicle.model = model;
         vehicle.year = year;
         vehicle.vin = vin;
         vehicle.name = name;
         
-        Net.sendVehicleData(this, make, model, year, vin);
-        
         //Persist the data, and return to the add MPG activity
         VehicleDao vd = new VehicleDao(this);
         vd.addVehicle(vehicle);
+        
+        Net.sendVehicleData(this, make, model, year, vin);
+        
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         dialogBuilder.setMessage(getResources().getString(R.string.add_vehicle_done));
         dialogBuilder.setPositiveButton(getResources().getString(R.string.generic_okay), new OnClickListener() {

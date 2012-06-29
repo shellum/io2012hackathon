@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App headers/name -->
+    <string name="app_name">"TrueMPG"</string>
+    <string name="title_activity_login">"TrueMPG - Connexion"</string>
+    <string name="title_activity_add_mpg">"TrueMPG - Données MPG Ajouter"</string>
+    <string name="title_activity_add_vehicle">"TrueMPG - Ajouter un véhicule"</string>
+    
+    <!-- Login screen -->
+    <string name="placeholder">"placeholder"</string>
+    <string name="login_instructions">"Il s'agit d'une option une seule configuration, le temps. Saisie d'une adresse e-mail permettra de produire de meilleures données en nous permettant de segmenter les données téléchargées"</string>
+    <string name="login_email">"email"</string>
+    <string name="login_continue_button">"Continuer"</string>
+
+    <!-- Generic strings -->
+    <string name="generic_add_vehicle">"Ajouter des véhicules"</string>
+    <string name="generic_cancel">"Annuler"</string>
+    <string name="generic_okay">"OK"</string>
+
+    <!-- Add mpg screen -->
+    <string name="add_finding_location">"En levant les yeux emplacement&#8230;"</string>
+    <string name="add_mpg_location">"Lieu de MPG: "</string>
+    <string name="add_gallons">"Gaz (gallons)"</string>
+    <string name="add_mileage">"Kilométrage"</string>
+    <string name="add_add_data">"Ajouter des données"</string>
+    <string name="add_mpg_instructions">"Entrez des informations de véhicule actualisé lorsque vous remplissez et envoyez-le au serveur"</string>
+    <string name="thanks_mpg">"Merci d'envoyer vos données MPG"</string>
+    <string name="add_mpg_need_vehicle">"Nous avons besoin de vous pour entrer dans les détails du véhicule avant de suivi MPG"</string>
+    
+    <!-- Add vehicle screen -->
+    <string name="add_vehicle_name">"Nom du véhicule"</string>
+    <string name="add_vehicle_instructions">"Saisissez vos informations de véhicule pour le suivi d'un nouveau véhicule"</string>
+    <string name="add_vehicle_make">"Faire"</string>
+    <string name="add_vehicle_model">"Modèle"</string>
+    <string name="add_vehicle_done">"Votre véhicule a été ajouté"</string>
+    <string name="add_vehicle_year">"Année"</string>
+    <string name="add_vehicle_vin">"VIN"</string>
+    
+</resources>

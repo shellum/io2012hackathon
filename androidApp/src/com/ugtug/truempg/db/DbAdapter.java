@@ -10,7 +10,7 @@ public class DbAdapter extends SQLiteOpenHelper {
     private static final int CURRENT_DB_VERSION = 1;
     
     //Table definitions
-    private static final String SQL_CREATE_VEHICLE = "CREATE TABLE vehicle (id INTEGER, name TEXT, make TEXT, model TEXT, year TEXT, vin TEXT)";
+    private static final String SQL_CREATE_VEHICLE = "CREATE TABLE vehicle (vehicleId INTEGER, name TEXT, make TEXT, model TEXT, year TEXT, vin TEXT)";
 
     private static DbAdapter dbAdapter;
     

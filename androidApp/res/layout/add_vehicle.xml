@@ -7,10 +7,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="vertical"
         android:padding="@dimen/padding_large" >
 
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_launcher" />
+        
+        
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
@@ -19,72 +26,82 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="9"
-        android:orientation="vertical"
-        android:padding="@dimen/padding_medium" >
-
-        <EditText
-            android:id="@+id/add_vehicle_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/add_vehicle_name" />
-
-        <EditText
-            android:id="@+id/add_vehicle_make"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/add_vehicle_make" />
-
-        <EditText
-            android:id="@+id/add_vehicle_model"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/add_vehicle_model" />
-
-        <EditText
-            android:id="@+id/add_vehicle_year"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/add_vehicle_year" />
-
-        <EditText
-            android:id="@+id/add_vehicle_vin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/add_vehicle_vin" />
+        android:layout_weight="1" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal" >
+            android:layout_weight="9"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_medium" >
 
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/add_vehicle_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="addVehicle"
-                android:text="@string/generic_add_vehicle" />
+                android:ems="10"
+                android:hint="@string/add_vehicle_name" >
 
-            <TextView
-                android:id="@+id/cancel_link"
-                android:layout_width="wrap_content"
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/add_vehicle_make"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:onClick="cancel"
-                android:paddingLeft="@dimen/padding_large"
-                android:text="TextView"
-                android:textColor="#0000ff" />
+                android:ems="10"
+                android:hint="@string/add_vehicle_make" />
 
+            <EditText
+                android:id="@+id/add_vehicle_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/add_vehicle_model" />
+
+            <EditText
+                android:id="@+id/add_vehicle_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/add_vehicle_year" />
+
+            <EditText
+                android:id="@+id/add_vehicle_vin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/add_vehicle_vin" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingTop="@dimen/padding_large" >
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="addVehicle"
+                    android:text="@string/generic_add_vehicle" />
+
+                <TextView
+                    android:id="@+id/cancel_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:onClick="cancel"
+                    android:paddingLeft="@dimen/padding_large"
+                    android:text="@string/placeholder"
+                    android:textColor="#0000ff" />
+            </LinearLayout>
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

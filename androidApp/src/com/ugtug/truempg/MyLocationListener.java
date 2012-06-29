@@ -28,7 +28,7 @@ public class MyLocationListener implements LocationListener {
 		double latitude = (location.getLatitude());
 		
 		//Tell the UI about it
-		updateText.setText("" + latitude + "," + longitude);
+		updateText.setText(updateText.getContext().getResources().getString(R.string.add_mpg_location) + latitude + AddMpgActivity.DELIMITER_LAT_LON + longitude);
         //Stop getting fixes from this provider
         locationManager.removeUpdates(this);
 	}

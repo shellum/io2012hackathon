@@ -25,7 +25,7 @@ public class Net {
     public static String OPERATION_ADD_VEHICLE = "operationAddVehicle";
     
     public static String ADD_VEHICLE_DESTINATION = "http://truefuelefficiency.appspot.com/rest/vehicles";
-    public static String ADD_MPG_DESTINATION = "http://truefuelefficiency.appspot.com/rest/mpg";
+    public static String ADD_MPG_DESTINATION = "http://truefuelefficiency.appspot.com/rest/fillups";
 
     //Send new vehicle data to the server
     public static void sendVehicleData(Context context, String make, String model, String year, String vin)
@@ -42,14 +42,10 @@ public class Net {
     }
     
     //Send new MPG data to the server
-    public static void sendMpgData(Context context, String gallons, String mileage, String date, String gps)
+    public static void sendMpgData(Context context, String quantity, String mileage, String longitude, String latitude, String vehicleId)
     {
-        //Pull out user data that has been saved
-        SharedPreferences sp = context.getSharedPreferences(LoginActivity.SHARED_PREFS_FILE, 0);
-        String email = sp.getString(LoginActivity.SHARED_PREFS_EMAIL, "blank@blank.blank");
-
         //Put together what we're posting
-        String postData = "gallons=" + gallons + "&mileage=" + mileage + "&date=" + date + "&gps=" + gps + "&userId=" + email;
+        String postData = "quantity=" + quantity + "&mileage=" + mileage + "&longitude=" + longitude + "&latitude=" + latitude + "&vehicleId=" + vehicleId;
         
         //Send the post
         makeServerCall(context, OPERATION_ADD_MPG, postData, ADD_MPG_DESTINATION);
@@ -118,7 +114,7 @@ public class Net {
                         if (operation.equals(OPERATION_ADD_VEHICLE))
                         {
                             VehicleDao vehicleDao = new VehicleDao(context);
-                            vehicleDao.updateLastVehicle(vehicle.id);
+                            vehicleDao.updateLastVehicle(vehicle.vehicleId);
                         }
 
                     }

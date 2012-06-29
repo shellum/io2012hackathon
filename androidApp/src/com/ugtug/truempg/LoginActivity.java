@@ -10,6 +10,8 @@ import android.widget.EditText;
 
 public class LoginActivity extends Activity {
 
+    private static final String LOGIN_ANONYMOUS = "anonymous";
+
     private EditText emailView;
     
     public static final String SHARED_PREFS_FILE = "sharedPrefs";
@@ -28,13 +30,20 @@ public class LoginActivity extends Activity {
         SharedPreferences sp = getSharedPreferences(LoginActivity.SHARED_PREFS_FILE, 0);
         String email = sp.getString(LoginActivity.SHARED_PREFS_EMAIL, "");
         
-        if(!"".equals(email)) emailView.setText(email);        
+        if(!"".equals(email)) 
+        {
+            emailView.setText(email);
+            login(null);
+        }
     }
     
     //Actually log in
     public void login(View view)
     {
         //Save the user id
+        //If the user did not enter one, setup the user as being anonymous
+        if("".equals(emailView.getText().toString())) emailView.setText(LOGIN_ANONYMOUS);
+        
         SharedPreferences.Editor editor = (Editor) getSharedPreferences(SHARED_PREFS_FILE, MODE_PRIVATE).edit();
         editor.putString(SHARED_PREFS_EMAIL, emailView.getText().toString());
         editor.commit();
@@ -42,6 +51,8 @@ public class LoginActivity extends Activity {
         //Let the user do something
         Intent intent = new Intent(this, AddMpgActivity.class);
         startActivity(intent);
+        
+        finish();
     }
     
 }

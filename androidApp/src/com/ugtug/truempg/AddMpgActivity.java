@@ -1,13 +1,14 @@
 package com.ugtug.truempg;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
@@ -27,9 +28,10 @@ import com.ugtug.truempg.util.Net;
 //It also allows a user to start an add vehicle activity
 public class AddMpgActivity extends Activity {
 
+    public static final String DELIMITER_LAT_LON = ",";
+    
     private TextView addVehicleLink;
     private TextView latLonText;
-    private TextView dateText;
     private Spinner vehicles;
     private TextView gallons;
     private TextView mileage;
@@ -50,12 +52,6 @@ public class AddMpgActivity extends Activity {
         mileage = (TextView)findViewById(R.id.add_mileage);
         addVehicleLink = (TextView)findViewById(R.id.add_vehicle_link);
         latLonText = (TextView)findViewById(R.id.add_location);
-        dateText = (TextView)findViewById(R.id.add_date);
-        
-        //Set the date
-        Date date = new Date();
-        String dateString = date.toString();
-        dateText.setText(dateString);
         
         //Add an HTML like link to cancel
         addVehicleLink.setText(Html.fromHtml("<u>"+getResources().getString(R.string.generic_add_vehicle)+"</u>"));
@@ -91,10 +87,12 @@ public class AddMpgActivity extends Activity {
         Vehicle v = (Vehicle)vehicles.getSelectedItem();
         String gallonsString = gallons.getText().toString();
         String mileageString = mileage.getText().toString();
-        String dateString = dateText.getText().toString();
         String latLonTextString = latLonText.getText().toString();
+        String[] latlon = latLonTextString.split(DELIMITER_LAT_LON);
+        String latitude = latlon[0];
+        String longitude = latlon[1];
         
-        Net.sendMpgData(this, gallonsString, mileageString, dateString, latLonTextString);
+        Net.sendMpgData(this, gallonsString, mileageString, latitude, longitude, ""+v.vehicleId);
         
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         dialogBuilder.setMessage(getResources().getString(R.string.thanks_mpg));
@@ -148,7 +146,25 @@ public class AddMpgActivity extends Activity {
         super.onResume();
         VehicleDao vd = new VehicleDao(this);
         List<Vehicle> vehicleList = vd.selectAll(true);
-        vehicles.setAdapter(new VehicleAdapter(vehicleList));
+        
+        if (vehicleList.size()==0)
+        {
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+            dialogBuilder.setMessage(getResources().getString(R.string.add_mpg_need_vehicle));
+            dialogBuilder.setPositiveButton(getResources().getString(R.string.generic_okay), new OnClickListener() {
+                
+                @Override
+                public void onClick(DialogInterface dialog, int which)
+                {
+                    addVehicle(null);
+                }
+            });
+            dialogBuilder.create().show();
+        }
+        else
+        {
+            vehicles.setAdapter(new VehicleAdapter(vehicleList));
+        }
     }
     
     //Allow the user to add a vehicle
