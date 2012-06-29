@@ -55,7 +55,7 @@ public class AddVehicleActivity extends Activity {
         String vin = vinView.getText().toString();
         String make = makeView.getText().toString();
         String model = modelView.getText().toString();
-        String year = yearView.getText().toString();
+        String year = yearView.getText().toString().replace(".", "").replace(",", "");
         String name = nameView.getText().toString();
         
         //Create a new vehicle using the data

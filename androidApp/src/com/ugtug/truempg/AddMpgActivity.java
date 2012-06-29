@@ -29,6 +29,7 @@ import com.ugtug.truempg.util.Net;
 public class AddMpgActivity extends Activity {
 
     public static final String DELIMITER_LAT_LON = ",";
+    public static final String DELIMITER_DESC = ":";
     
     private TextView addVehicleLink;
     private TextView latLonText;
@@ -85,12 +86,18 @@ public class AddMpgActivity extends Activity {
     public void addMpg(View view)
     {
         Vehicle v = (Vehicle)vehicles.getSelectedItem();
-        String gallonsString = gallons.getText().toString();
-        String mileageString = mileage.getText().toString();
+        String gallonsString = gallons.getText().toString().replace(".", "").replace(",", "");
+        String mileageString = mileage.getText().toString().replace(".", "").replace(",", "");
         String latLonTextString = latLonText.getText().toString();
-        String[] latlon = latLonTextString.split(DELIMITER_LAT_LON);
-        String latitude = latlon[0];
-        String longitude = latlon[1];
+        String latitude = "0";
+        String longitude = "0";
+        String[] descParts = latLonTextString.split(DELIMITER_DESC);
+        if (descParts.length == 2)
+        {
+            String[] latlon = descParts[1].split(DELIMITER_LAT_LON);
+            latitude = latlon[0];
+            longitude = latlon[1];
+        }
         
         Net.sendMpgData(this, gallonsString, mileageString, latitude, longitude, ""+v.vehicleId);
         

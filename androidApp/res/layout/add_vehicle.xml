@@ -68,7 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/add_vehicle_year" />
+                android:hint="@string/add_vehicle_year"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/add_vehicle_vin"
